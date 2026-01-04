@@ -13,7 +13,6 @@ A TensorFlow/Keras model that classifies images as either cats or humans.
 
 - `cat_vs_human.py` - Main training script
 - `test_img.py` - Test the model on a single image
-- `webcam_face.py` - Real-time webcam detection script
 
 ### Dataset Structure
 
@@ -46,11 +45,6 @@ pip install -r requirements.txt
 Test on a single image:
 ```bash
 python test_img.py
-```
-
-Run webcam detection:
-```bash
-python webcam_face.py
 ```
 
 ## 📝 Training
