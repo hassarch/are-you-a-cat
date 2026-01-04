@@ -1,0 +1,10 @@
+node_modules/
+venv/
+dist/
+build/
+*.zip
+*.tar.gz
+*.h5
+*.pth
+
+dataset/
