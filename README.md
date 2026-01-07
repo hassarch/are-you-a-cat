@@ -1,55 +1,92 @@
-# 🐱 Cat or Human? - ML Model
+# 🐱 Cat or Human? - ML Classification Model
 
-A TensorFlow/Keras model that classifies images as either cats or humans.
+A machine learning project that uses transfer learning with TensorFlow/Keras to classify images as either cats or humans. The model leverages MobileNetV2 architecture for efficient and accurate binary classification.
 
 ## 📦 Model Files
 
-- `cat_or_human_model.keras` - The trained model file
-- `haarcascade_frontalface_default.xml` - Face detection cascade classifier
+- `cat_or_human_model.keras` - The trained TensorFlow/Keras model file
+- `haarcascade_frontalface_default.xml` - OpenCV Haar cascade classifier for face detection (included for potential future enhancements)
 
-## 🚀 Usage
+## 🚀 Quick Start
 
-### Training Scripts
+### Installation
 
-- `cat_vs_human.py` - Main training script
-- `test_img.py` - Test the model on a single image
+1. Clone or download this repository
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-### Dataset Structure
+### Dataset Preparation
 
+Ensure your dataset follows this structure:
 ```
 dataset/
 ├── train/
-│   ├── cat/      # Cat training images
-│   └── human/    # Human training images
+│   ├── cat/      # Training images of cats
+│   └── human/    # Training images of humans
 └── test/
-    ├── cat/      # Cat test images
-    └── human/    # Human test images
+    ├── cat/      # Test images of cats
+    └── human/    # Test images of humans
 ```
 
-## 📋 Requirements
+## 🏃‍♂️ Usage
 
-Install dependencies:
+### Training the Model
 
+Train a new model from scratch:
 ```bash
-pip install -r requirements.txt
+python cat_vs_human.py
 ```
 
-## 🎯 Model Details
+**Training Details:**
+- Uses MobileNetV2 as base model (pre-trained on ImageNet)
+- Input size: 224x224 pixels
+- Binary classification: Cat (0) or Human (1)
+- Batch size: 32
+- Default epochs: 5
+- Data augmentation: horizontal flip and zoom
 
-- **Input Size**: 224x224 pixels
-- **Architecture**: Transfer learning model
-- **Classes**: Cat (0) or Human (1)
+### Testing the Model
 
-## 🧪 Testing
-
-Test on a single image:
+Test the trained model on a single image:
 ```bash
 python test_img.py
 ```
 
-## 📝 Training
+**Note:** The test script currently loads `test2.jpg` from the project root. Update the script to test different images as needed.
 
-Train the model:
-```bash
-python cat_vs_human.py
-```
+## 📋 Requirements
+
+- Python 3.7+
+- TensorFlow 2.x
+- OpenCV
+- NumPy
+- Pillow
+
+## 🎯 Model Architecture
+
+- **Base Model**: MobileNetV2 (transfer learning)
+- **Input Shape**: (224, 224, 3)
+- **Layers**: Global Average Pooling + Dense(128) + Dense(1, sigmoid)
+- **Output**: Probability score (0-1), where >0.5 = Human, ≤0.5 = Cat
+
+## 📊 Performance
+
+The model's performance depends on:
+- Quality and quantity of training data
+- Image preprocessing and augmentation
+- Number of training epochs
+- Fine-tuning parameters
+
+## 🤝 Contributing
+
+Feel free to contribute by:
+- Improving the model architecture
+- Adding more data preprocessing techniques
+- Enhancing the testing capabilities
+- Adding support for batch testing
+
+## 📄 License
+
+This project is licensed under the terms specified in the LICENSE file.
